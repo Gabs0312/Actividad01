@@ -1,57 +1,57 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Gráfico con línea punteada y punto específico - Chart.js</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-    <canvas id="myChart" width="400" height="200"></canvas>
+    <head>
+        <title>Gráfico con línea punteada y punto específico - Chart.js</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <canvas id="myChart" width="400" height="200"></canvas>
 
-    <script>
-        // Datos para el conjunto de datos "Línea punteada"
-        const dataPunteada = [10, 20, 30, 40, 50];
+        <script>
+            // Datos para el conjunto de datos "Línea punteada"
+            const dataPunteada = [10, 20, 30, 40, 50];
 
-        // Índice del punto específico que deseamos mostrar (por ejemplo, el valor "30" en este caso)
-        const puntoEspecificoIndex = 2;
+            // Índice del punto específico que deseamos mostrar (por ejemplo, el valor "30" en este caso)
+            const puntoEspecificoIndex = 2;
 
-        // Configuración de la línea punteada
-        const datasetPunteado = {
-            label: 'Línea punteada',
-            data: dataPunteada,
-            borderColor: 'red',
-            borderWidth: 1,
-            borderDash: [5, 5], // Esto crea una línea punteada
-            fill: false,
-            pointRadius: dataPunteada.map((valor, index) => index === puntoEspecificoIndex ? 5 : 0), // Define el radio de los puntos (0 para todos excepto el punto específico)
-            pointStyle: dataPunteada.map((valor, index) => index === puntoEspecificoIndex ? 'circle' : undefined), // Define el estilo del punto específico
-            pointBackgroundColor: 'red', // Color de fondo del punto específico
-            pointBorderColor: 'white', // Color del borde del punto específico
-            pointBorderWidth: 2 // Grosor del borde del punto específico
-        };
+            // Configuración de la línea punteada
+            const datasetPunteado = {
+                label: 'Línea punteada',
+                data: dataPunteada,
+                borderColor: 'red',
+                borderWidth: 1,
+                borderDash: [5, 5], // Esto crea una línea punteada
+                fill: false,
+                pointRadius: dataPunteada.map((valor, index) => index === puntoEspecificoIndex ? 5 : 0), // Define el radio de los puntos (0 para todos excepto el punto específico)
+                pointStyle: dataPunteada.map((valor, index) => index === puntoEspecificoIndex ? 'circle' : undefined), // Define el estilo del punto específico
+                pointBackgroundColor: 'red', // Color de fondo del punto específico
+                pointBorderColor: 'white', // Color del borde del punto específico
+                pointBorderWidth: 2 // Grosor del borde del punto específico
+            };
 
-        // Configuración de los datos del gráfico
-        const data = {
-            labels: ['A', 'B', 'C', 'D', 'E'],
-            datasets: [datasetPunteado]
-        };
+            // Configuración de los datos del gráfico
+            const data = {
+                labels: ['A', 'B', 'C', 'D', 'E'],
+                datasets: [datasetPunteado]
+            };
 
-        // Configuración de las opciones del gráfico
-        const options = {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
+            // Configuración de las opciones del gráfico
+            const options = {
+                responsive: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
-            }
-        };
+            };
 
-        // Crear el gráfico
-        const ctx = document.getElementById('myChart').getContext('2d');
-        const myChart = new Chart(ctx, {
-            type: 'line',
-            data: data,
-            options: options
-        });
-    </script>
-</body>
+            // Crear el gráfico
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: options
+            });
+        </script>
+    </body>
 </html>
